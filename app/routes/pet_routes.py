@@ -15,6 +15,9 @@ def create_pet():
     
     try:
         new_pet = Pet.from_dict(request_body)
+        generated_name = generate_name(new_pet)
+        new_pet.name = generated_name.strip("\"")
+         
         db.session.add(new_pet)
         db.session.commit()
         
@@ -40,19 +43,19 @@ def get_single_pet(pet_id):
     pet = validate_model(Pet,pet_id)
     return pet.to_dict()
 
-@bp.post("/<pet_id>/generate")
-def add_name(pet_id):
-    pet_obj = validate_model(Pet, pet_id)
+# @bp.post("/<pet_id>/generate")
+# def add_name(pet_id):
+#     pet_obj = validate_model(Pet, pet_id)
     
-    if pet_obj.name:
-        return {"message": f"Name already generated for {pet_obj.name}"}, 201
+#     if pet_obj.name:
+#         return {"message": f"Name already generated for {pet_obj.name}"}, 201
     
-    name = generate_name(pet_obj)
+#     name = generate_name(pet_obj)
     
-    db.session.add(name)
-    db.session.commit()
+#     db.session.add(name)
+#     db.session.commit()
     
-    return {"message": f"Name successfully added to {pet_obj.name}"}, 201
+#     return {"message": f"Name successfully added to {pet_obj.name}"}, 201
    
     
 def generate_name(pet):

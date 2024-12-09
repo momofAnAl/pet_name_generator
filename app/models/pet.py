@@ -26,7 +26,7 @@ class Pet(db.Model):
     @classmethod
     def from_dict(cls, data_dict):
         new_pet = cls(
-            name = data_dict["name"],
+            name = None,
             animal_type = data_dict["animal"],
             personality = data_dict["personality"],
             color = data_dict["coloration"]
