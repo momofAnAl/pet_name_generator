@@ -46,14 +46,13 @@ def get_single_pet(pet_id):
     
 def generate_name(pet):
     model = genai.GenerativeModel("gemini-1.5-flash")
-    input_message = f"I have a pet.\
-    I have a pet who has following characteristic {pet.personality}.\
+    input_message = f"I have a pet who {pet.personality}.\
     My pet's color is {pet.color} and species is {pet.animal_type}.\
-    Please generate a unique and creative name for my pet."
+    Please generate only one unique and creative name for my pet without any message included."
     
     response = model.generate_content(input_message)
     print(response)
-    response_split = response.text
+    response_split = response.text.strip()
     
     return response_split
     
