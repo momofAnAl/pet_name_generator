@@ -42,20 +42,6 @@ def get_pets():
 def get_single_pet(pet_id):
     pet = validate_model(Pet,pet_id)
     return pet.to_dict()
-
-# @bp.post("/<pet_id>/generate")
-# def add_name(pet_id):
-#     pet_obj = validate_model(Pet, pet_id)
-    
-#     if pet_obj.name:
-#         return {"message": f"Name already generated for {pet_obj.name}"}, 201
-    
-#     name = generate_name(pet_obj)
-    
-#     db.session.add(name)
-#     db.session.commit()
-    
-#     return {"message": f"Name successfully added to {pet_obj.name}"}, 201
    
     
 def generate_name(pet):
