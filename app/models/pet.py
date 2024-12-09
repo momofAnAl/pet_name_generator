@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Mapped, mapped_column
 from typing import Optional
 from ..db import db
+from app.routes import pet_routes
 
 class Pet(db.Model):
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)

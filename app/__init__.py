@@ -3,6 +3,9 @@ from flask import Flask
 from .routes.pet_routes import bp as pets_bp
 from .db import db, migrate
 from .models import pet
+from dotenv import load_dotenv
+
+load_dotenv()
 
 def create_app(config=None):
     # __name__ stores the name of the module we're in
